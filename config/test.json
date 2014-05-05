@@ -1,0 +1,9 @@
+{
+	"redis" : {
+		"secret" : "secret for test",
+		"options" : {}
+	},
+	"mongo" : {
+		"db" : "SimpleConektaIOExampleTest"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"redis" : {
+		"secret" : "5a2b990a29d8feae69e746ce8f71e5e292bae5c5f448b87ab3b4a806b6f227d3",
+		"options" : {}
+	},
+	"mongo" : {
+		"db" : "SimpleConektaIOExampleProduction"
+	}	
+}

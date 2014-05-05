@@ -1,0 +1,22 @@
+{
+  "name": "simpleconektaioexample",
+  "version": "0.0.0",
+  "dependencies": {
+    "express.io": "~1.1.13",
+    "connect-redis": "~1.4.7",
+    "underscore": "~1.6.0",
+    "swig": "~1.3.2",
+    "mongoose": "~3.8.8",
+    "passport": "~0.1.18",
+    "passport-local": "~0.1.6",
+    "stackers": "~0.1.2",
+    "password-hash": "~1.2.1",
+    "connect-flash": "~0.1.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-stylus": "~0.13.2",
+    "grunt-contrib-watch": "~0.6.0",
+    "grunt-nodemon": "~0.2.1"
+  }
+}

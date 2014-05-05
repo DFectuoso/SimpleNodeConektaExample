@@ -1,0 +1,28 @@
+{% extends '../layouts/main.html' %}
+
+{% block title %}My Page{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	{% if error %}
+	<div class="alert alert-danger">
+		<button class="close" data-dismiss="alert">
+			×
+		</button>
+		<i class="fa-fw fa fa-times"></i>
+		<strong>Error!</strong> {{error}}.
+	</div>
+	{% endif %}
+	<form class="form-signin" method="POST" action="/login">
+		<h2 class="form-signin-heading">Log in</h2>
+		<p>Email</p>
+		<input type="email" name="email" class="form-control" placeholder="Email address" required="">
+		<p>Password</p>
+		<input type="password" name="password" class="form-control" placeholder="Password" required="">
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+	</form>
+</div>
+{% endblock %}
