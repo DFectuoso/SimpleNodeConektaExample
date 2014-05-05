@@ -1,13 +1,82 @@
-{% extends '../layouts/app.html' %}
+{% extends '../layouts/main.html' %}
 
 {% block title %}My Page{% endblock %}
 
-{% block head %}
+{% block js %}
+  <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.1/js/conekta.js"></script>
+
+	<script>
+		Conekta.setPublishableKey('Qfw4ZozppXFtvDqaUdt1');
+
+		var conektaSuccessResponseHandler = function(response) {
+		  var $form = $('#conektaform');
+		  var token_id = response.id;
+		  // Inserta el token_id dentro del formulario para que sea enviado al servidor
+		  $form.append($('<input type="hidden" name="conektaTokenId" />').val(token_id));
+		  // y manda el formulario a tu servidor
+		  $form.get(0).submit();
+		};
+
+		var conektaErrorResponseHandler = function(response) {
+  		var $form = $('#conektaform');
+	    // Show the errors on the form
+	    $form.find('.card-errors').text(response.message);
+	    $form.find('button').prop('disabled', false);
+		};
+
+		$(document).ready(function () {
+			$('#conektaform').submit(function(event) {
+				var $form = $(this);
+				// Inhabilita el botón submit para prevenir múltiples clics
+				$form.find('button').prop('disabled', true);
+				Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+				// Prevenir que la información del formulario sea mandado a tu servidor
+				return false;
+			});
+		});
+	</script>
 {% endblock %}
 
 {% block content %}
 <div class="banner">
-	<h1>SimpleConektaIOExample App</h1>
-	<p class="lead">This is the app main area, show something nice to your user.</p>
+	<h1>SimpleConektaIOExample</h1>
+</div>
+<div class="col-md-4" style="margin:auto;">
+
+	<form method="post" id="conektaform">
+		<div class="input-group">
+			<span class="input-group-addon">Nombre:</span>
+  		<input type="text" placeholder="Nombre como aparece en la tarjeta" class="form-control" placeholder="Username" data-conekta="card[name]">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">Tarjeta:</span>
+			<input type="text" class="form-control"  placeholder="12 dígitos de tu tarjeta" data-conekta="card[number]">
+		</div>
+
+		<div class="row">
+			<div class="col-md-7">
+				<div class="input-group">
+					<span class="input-group-addon">Vencimiento Mes:</span>
+					<input type="text" class="form-control" placeholder="01" data-conekta="card[exp_month]">
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="input-group">
+					<span class="input-group-addon">Año:</span>
+					<input type="text" class="form-control" placeholder="2015" data-conekta="card[exp_year]">
+				</div>
+			</div>
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">CVV:</span>
+			<input type="text" class="form-control" placeholder="000" data-conekta="card[cvc]">
+		</div>
+
+		<div class="row" style="padding:20px; float:right;">
+			<div>
+				<button type="submit" class="btn btn-lg btn-success">Comprar</button>
+			</div>
+		</div>
+	</form>
 </div>
 {% endblock %}

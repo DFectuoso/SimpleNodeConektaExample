@@ -1,0 +1,22 @@
+{% extends '../layouts/main.html' %}
+
+{% block title %}My Page{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="banner">
+  <h1>SimpleConektaIOExample</h1>
+</div>
+<div class="col-md-4" style="margin:auto;">
+Respuesta de Conekta:
+
+Conekta ID: {{conektaId}}<br/>
+Conekta Status: {{conektaStatus}}<br/>
+Conekta PaidAt: {{conektaPaidAt}}<br/>
+Conekta Fee: {{conektaFee}}<br/>
+
+</div>
+{% endblock %}

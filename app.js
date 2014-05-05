@@ -62,7 +62,7 @@ passport.deserializeUser(function (obj, done) {
 });
 
 app.get('/', function (req, res) {
-	res.render('home/index');
+	res.redirect('app/index');
 });
 
 // Controllers
